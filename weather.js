@@ -4,6 +4,11 @@ let searchbtn =document.querySelector(".search-btn");
 let searchinput =document.querySelector(".search-input");
 let citynamedisplay =document.querySelector(".city_name");
 let Weatherimage =document.querySelector(".weather-img");
+let sunRizedisplay =document.querySelector(".sunriseTime");
+let sunSetDisplay =document.querySelector(".sunsetTime");
+let HumidityDisplay =document.querySelector(".Humidity");
+let WindDisplay =document.querySelector(".Wind");
+let PrecipitationDisplay =document.querySelector(".Precipitation");
 
 
 
@@ -36,7 +41,39 @@ async function CheckWeather(city){
 
     tempdisplay.innerHTML=weatherdata.main.temp +" ºC";
     citynamedisplay.innerHTML=weatherdata.name;
+    HumidityDisplay.innerHTML =weatherdata.main.humidity;
+    WindDisplay.innerHTML =weatherdata.wind.speed;
+    PrecipitationDisplay.innerHTML =weatherdata.clouds.all +" %";
 
+
+// const d = new Date(1711324974 * 1000);
+// let hour = d.getHours();
+// let minutes = d.getMinutes();
+// sunRizedisplay.innerHTML = weatherdata.sys.sunrise ;
+
+function sunrise(sunriseTime){
+    const d = new Date(sunriseTime * 1000);
+    let hour = d.getHours();
+    let minutes = d.getMinutes();
+    let ampm = hour >= 12 ? 'PM' : 'AM';
+    // const localtime = d.toLocaleTimeString();
+    sunRizedisplay.innerHTML = hour + " : "+ minutes +" "+ampm;
+
+};
+
+function sunset(sunriseTime){
+    const d = new Date(sunriseTime * 1000);
+    let hour = d.getHours();
+    let minutes = d.getMinutes();
+    let newhour = hour >= 12 ? hour-12 : hour;
+    let ampm = hour >= 12 ? 'PM' : 'AM';
+    // const localtime = d.toLocaleTimeString();
+    sunSetDisplay.innerHTML = newhour + " : "+ minutes +" "+ampm;
+
+};
+
+sunrise(weatherdata.sys.sunrise);
+sunset(weatherdata.sys.sunset);
 
 
 
@@ -47,6 +84,7 @@ async function CheckWeather(city){
 
 }
 
+CheckWeather("Dhaka");
 
 function searchWeather(){
     let getcity = searchinput.value;

@@ -18,7 +18,8 @@
     max-width: 500px;
     padding: 30px;
     margin: 0px auto;
-    background-color: rgb(17, 233, 233);
+    background: rgb(0,212,191);
+    background: linear-gradient(90deg, rgba(0,212,191,1) 37%, rgba(10,187,222,1) 100%);
     border-radius: 20px;
 }
 
@@ -52,7 +53,7 @@
 }
 
 .city_name{
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
     font-size: 34px;
     text-transform: capitalize;
@@ -62,8 +63,8 @@
 
 .weather-image-area{
     margin: 20px auto;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
 
 }
@@ -74,10 +75,30 @@
 }
 
 .temp-display{
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
     font-size: 50px;
     text-transform: capitalize;
     color: rgb(255, 255, 255);
     font-weight: bold;
+}
+
+.sunrize_sunset{
+    color: #fff;
+    font-weight: 700;
+ 
+}
+.other_details{
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+@media (max-width: 510px) {
+    .sunrize, .sunset{
+        flex-direction: column;
+    }
+
+    
 }
